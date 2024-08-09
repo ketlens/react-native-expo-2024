@@ -1,19 +1,15 @@
-    import { Children, createContext } from "react";
-import { ActivityIndicator, View } from "react-native";
+    import { useFonts } from "expo-font";
+import { Children, createContext, useContext } from "react";
+import { ActivityIndicator, View, Text } from "react-native";
 import { Colors } from "react-native/Libraries/NewAppScreen";
 
     const FontContext = createContext({})
 
     export function FontProvider({crildren}){
-        const [loaded, error] = userFont({
+        const [loaded, error] = useFonts({
             regular:require("../../assets/fonts/MontserratAlternates-Regular.ttf"),
-            bold:require("../../assets/fonts/MontserratAlternates-Bold.ttf"),
-            black:require("../../assets/fonts/MontserratAlternates-Black.ttf"),
-            semibold:require("../../assets/fonts/MontserratAlternates-SemiBold.ttf"),
-            light:require("../../assets/fonts/MontserratAlternates-Linght.ttf"),
-
         });
- 
+     
         if (!loaded && !error){
            return (
            <View style={{flex:1, justifyContent: "center", alingItems:"center"}}>
@@ -28,7 +24,7 @@ import { Colors } from "react-native/Libraries/NewAppScreen";
     }
 
     export function userFont(){
-        const context = userContext(FontContext);
+        const context = useContext(FontContext);
         if (!context) {
             throw new Error("useFont must be used within a FontProvider");
         }
