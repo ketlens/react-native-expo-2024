@@ -8,6 +8,7 @@ const DrawerLayout = () =>{
         </GestureHandlerRootView>
       );
 }
+
 export default function Layout() {
   return DrawerLayout();
 }
