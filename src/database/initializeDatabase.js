@@ -13,9 +13,9 @@ export async function initializeDatabase(database) {
                 updated_at DATE
             ); 
 
-            INSERT OR REPLACE INTO users (nome, email, senha, role) VALUES ('Super', 'super@gmail.com', ' A123456a!', 'SUPER');
-            INSERT OR REPLACE INTO users (nome, email, senha, role) VALUES ('Admin', 'adim@gmail.com', ' A123456a!', 'ADMIN');
-            INSERT OR REPLACE INTO users (nome, email, senha, role) VALUES ('User', 'user@gmail.com', ' A123456a!', 'USER');
+            INSERT OR REPLACE INTO users (nome, email, senha, role) VALUES ('Super', 'super@email.com', 'A123456a!', 'SUPER');
+            INSERT OR REPLACE INTO users (nome, email, senha, role) VALUES ('Admin', 'adim@email.com', 'A123456a!', 'ADMIN');
+            INSERT OR REPLACE INTO users (nome, email, senha, role) VALUES ('User', 'user@email.com', 'A123456a!', 'USER');
             `);
     } catch (error) {
         console.log(error);

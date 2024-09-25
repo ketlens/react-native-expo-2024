@@ -6,7 +6,7 @@ import { router } from "expo-router";
 import { useState } from "react";
 
 export default function App() {
-  const { singnIn, singOut } = useAuth();
+  const { signIn, signOut } = useAuth();
   const [email, setEmail] = useState("super@email.com");
   const [password, setPassword] = useState("A123456a!");
   const [passwordVisibility, setPasswordVisibilily] = useState(false);
@@ -15,9 +15,9 @@ export default function App() {
     setPasswordVisibilily(!passwordVisibility);
   };
 
-  const handlerEntrarSuper = async () => {
+  const handleEntrarSuper = async () => {
     try {
-      await singnIn({ email, password });
+      await signIn({ email, password });
       router.replace("/");
     } catch (error) {
       Alert.alert("Erro", "E-mail ou senha inválidos");
@@ -37,7 +37,7 @@ export default function App() {
         <TextInput style={styles.emailiputbox} placeholder="Senha" value={password} onChangeText={setPassword} secureTextEntry={passwordVisibility} />
         <Ionicons name={passwordVisibility ? "eye-off":"eye"} size={20} color="Black" onPress={tooglePasswordVisibility}/>
       </View>
-      <Button title="Entrar" onPress={handlerEntrarSuper} style={styles.button} />
+      <Button title="Entrar" onPress={handleEntrarSuper} style={styles.button} />
       <Button title="Sobre" onPress={() => router.push("/about")} />
       <Button
         title="sair do aplicativo"
