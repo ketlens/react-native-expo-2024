@@ -1,5 +1,7 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState, View, Text } from "react";
 import { useUserDatabase } from "../../database/useUserDatabase";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { ActivityIndicator } from "react-native";
 
 const AuthContext = createContext({});
 
@@ -18,9 +20,35 @@ export function AuthProvider({ children }) {
 
   const { authUser } = useUserDatabase();
 
+  useEffect(() => {
+    const loadStorageData = async () => {
+      const storageUser = await AsyncStorage.getItem("@payment:user");
+
+      if (storageUser) {
+        setUser({
+          autenticated: true,
+          user: JSON.parse(storageUser),
+          role: JSON.parse(storageUser).role,
+        });
+      } else {
+        setUser({
+          autenticated: false,
+          user: null,
+          role: null,
+        });
+      }
+    };
+
+    loadStorageData();
+  },[]);
+
+  useEffect(() => {
+    console.log("AuthProvider", user);
+  }, [user]);
+
   const signIn = async ({ email, password }) => {
     const response = await authUser({ email, password });
-    console.log(response);
+    console.log(!response);
 
     if (!response) {
       setUser({
@@ -31,6 +59,8 @@ export function AuthProvider({ children }) {
       throw new Error("User not found");
     }
 
+    await AsyncStorage.setItem("@payment:user", JSON.stringify(response));
+    
     setUser({
       autenticated: true,
       user: response,
@@ -38,12 +68,24 @@ export function AuthProvider({ children }) {
     });
   };
   const signOut = async () => {
+    await AsyncStorage.deleteItem("@payment:user");
     setUser({});
   };
 
   useEffect(() => {
     console.log("AuthProvider", user);
   }, [user]);
+
+  if (user.autenticated === null) {
+    return (
+        <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+            <Text style={{ fontSize: 20, marginTop: 15, color: "#253d66" }}>
+                Carregando dados do usuário...
+            </Text>
+            <ActivityIndicator size="large" color="#3a78e0" />
+        </View>
+    )
+}
 
   return (
     <AuthContext.Provider value={{ user, signIn, signOut }}>
