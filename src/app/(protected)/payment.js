@@ -1,9 +1,11 @@
-import { View, Text} from 'react-native';
+import { View, Text } from "react-native";
 
-export function Payment() {
+
+export default function List() {
   return (
-    <View style={{flex:1, justifyContent: 'center', alingItems:'center'}}>
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text>Pagamentos</Text>
     </View>
   );
 }
+

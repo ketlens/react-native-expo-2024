@@ -1,9 +1,12 @@
-import { createContext, useContext, useEffect, useState, View, Text } from "react";
-import { useUserDatabase } from "../../database/useUserDatabase";
+import { createContext, useContext, useEffect, useState } from "react";
+import { View, Text } from "react-native";
+import { useUsersDatabase } from "../../database/useUsersDatabase";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ActivityIndicator } from "react-native";
 
+
 const AuthContext = createContext({});
+
 
 export const Role = {
   SUPER: "SUPER",
@@ -11,71 +14,86 @@ export const Role = {
   USER: "USER",
 };
 
+
 export function AuthProvider({ children }) {
   const [user, setUser] = useState({
-    autenticated: null,
+    authenticated: null,
     user: null,
     role: null,
   });
 
-  const { authUser } = useUserDatabase();
+
+  const { authUser } = useUsersDatabase();
+
 
   useEffect(() => {
     const loadStorageData = async () => {
       const storageUser = await AsyncStorage.getItem("@payment:user");
 
+
       if (storageUser) {
         setUser({
-          autenticated: true,
+          authenticated: true,
           user: JSON.parse(storageUser),
           role: JSON.parse(storageUser).role,
         });
       } else {
         setUser({
-          autenticated: false,
+          authenticated: false,
           user: null,
           role: null,
         });
       }
     };
 
+
     loadStorageData();
   },[]);
+
 
   const signIn = async ({ email, password }) => {
     const response = await authUser({ email, password });
     if (!response) {
       setUser({
-        autenticated: false,
+        authenticated: false,
         user: null,
         role: null,
       });
-      throw new Error("User not found");
+      throw new Error("Usuario ou senha errados");
     }
 
+
     await AsyncStorage.setItem("@payment:user", JSON.stringify(response));
-    
+   
     setUser({
-      autenticated: true,
+      authenticated: true,
       user: response,
       role: response.role,
     });
   };
+
+
   const signOut = async () => {
-    await AsyncStorage.deleteItem("@payment:user");
-    setUser({});
+    await AsyncStorage.removeItem("@payment:user");
+    setUser({
+      authenticated: false,
+      user: null,
+      role: null,
+    });
   };
 
-  if (user.autenticated === null) {
+
+  if (user.authenticated === null) {
     return (
-        <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-            <Text style={{ fontSize: 20, marginTop: 15, color: "#253d66" }}>
-                Carregando dados do usuário...
-            </Text>
-            <ActivityIndicator size="large" color="#3a78e0" />
-        </View>
-    )
-}
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <Text style={{ fontSize: 20, marginTop: 15, color: "#253d66" }}>
+          Carregando dados do usuário...
+        </Text>
+        <ActivityIndicator size="large" color="#3a78e0" />
+      </View>
+    );
+  }
+
 
   return (
     <AuthContext.Provider value={{ user, signIn, signOut }}>
@@ -83,6 +101,7 @@ export function AuthProvider({ children }) {
     </AuthContext.Provider>
   );
 }
+
 
 export function useAuth() {
   const context = useContext(AuthContext);
