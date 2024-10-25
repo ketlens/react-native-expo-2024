@@ -4,6 +4,7 @@ import { Alert, BackHandler, StyleSheet, Text, TextInput, View, TouchableOpacity
 import { useAuth } from "../hooks/Auth";
 import { router } from "expo-router";
 import { useState } from "react";
+import { LinearGradient } from "expo-linear-gradient";
 
 
 export default function App() {
@@ -31,9 +32,21 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-     
-      <Image source={{uri: "https://www.github.com/ketlens.png"}} style={{ width: 100, height: 100, borderRadius: 50, margin:10 }} />
-      <Text style={styles.title}>Aplicativo Pronto para Usar</Text>
+     <LinearGradient 
+  style={{
+	height: 400, 
+	width: 450, 
+  marginTop: -20,
+	borderRadius: 5}}
+
+	colors={[ '#28f5','#845ec2']}>
+
+</LinearGradient>
+<View>
+<Image source={require('../assets/logo1.png')} style={{ width: 200, height: 200, borderRadius: 100, marginTop:-300 }} />
+</View>
+    
+      <Text style={styles.title}>GistLiterary</Text>
       <View style={styles.inputbox}>
         <Ionicons name="mail-open-sharp" size={20} color="Black" />
         <TextInput style={styles.emailInputBox} placeholder="E-mail" value={email} onChangeText={setEmail} />
@@ -65,11 +78,12 @@ const styles = StyleSheet.create({
     padding: 24,
     justifyContent: "center",
     gap: 15,
-    backgroundColor:"#fff",
+    backgroundColor:"#F0F8FF",
   },
   title: {
     fontFamily: "regular",
     fontSize: 20,
+    color: "#845ec2",
   },
   inputbox: {
     flexDirection: "row",
@@ -84,6 +98,7 @@ const styles = StyleSheet.create({
     gap: 10,
     margin: 5,
     fontFamily: "regular",
+    color: "#845ec2",
   },
   button: {
     borderRadius: 50,
@@ -93,7 +108,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   buttonText: {
-    color: "#d5cabd",
+    color: "#F0F8FF",
     fontSize: 16,
   },
 });

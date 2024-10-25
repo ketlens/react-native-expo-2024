@@ -11,9 +11,9 @@ const {user, signOut} = useAuth();
 
 
   return (
-    <View style={{ flex: 1 }}>
-      <View style={{marginTop: 20, justifyContent: "center", alignItems: "center", backgroundColor: "#f0f0f0", paddingVertical: 10, }}>
-        <Image source={{uri: "https://www.github.com/ketlens.png"}} style={{ width: 100, height: 100, borderRadius: 50, margin:10 }} />
+    <View style={{ flex: 1,  }}>
+      <View style={{marginTop: 20, justifyContent: "center", alignItems: "center", backgroundColor: "#f0f0f0", paddingVertical: 15, }}>
+        <Image source={{uri: "https://www.github.com/ketlens.png"}} style={{ width: 100, height: 100, borderRadius: 50, margin:20 }} />
           <Text style={{fontSize: 20, textAlign: "center"}} >
             {user.user?.nome}
           </Text>
@@ -21,18 +21,20 @@ const {user, signOut} = useAuth();
     <DrawerContentScrollView {...props}>
       <DrawerItemList {...props} />
     </DrawerContentScrollView>
-    <TouchableOpacity onPress={()=>signOut()}
-    style={{
-    justifyContent:"center",
-    alingItens:"center",
-    height:50,
-    margin:10,
-    background: "#4b204b",
-    color: "white",
-    borderRadius: 5,}}>
-      <Text style={{color:"white", fontFamily: "regular"}}>Deslogar</Text>
-    </TouchableOpacity>
-    <Button title="Sair"  style={{height: 100}} />
+    <TouchableOpacity 
+  onPress={() => signOut()} 
+  style={{
+    justifyContent: "center",
+    alignItems: "center",  // Corrigido: era alingItens
+    height: 50,
+    margin: 10,
+    backgroundColor: "#845ec2",  // Corrigido: era background
+    borderRadius: 5
+  }}>
+    <Text style={{ color: "white", fontFamily: "regular" }}>Deslogar</Text>
+</TouchableOpacity>
+
+    
     </View>
   );
 }
@@ -42,19 +44,46 @@ const DrawerLayout = () =>{
    return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <Drawer drawerContent={(props) => <CustomDrawerContent {...props} />} >
-        <Drawer.Screen name="index" options={{drawerLabel: "Principal",
-        headerTitle:"Principal",
-        drawerIcon: () => <Ionicons name="home" size={24} color="black" />
+        <Drawer.Screen name="index" options={{drawerLabel: "Inicio",
+        headerTitle:"Inicio", 
+        drawerIcon: () => <Ionicons name="home" size={24} color="black" style={{color:"#845ec2"}} />
+      }}
+        />
+       <Drawer.Screen name="notificacao" options={{drawerLabel: "Notificações",
+        headerTitle:"Notificações", 
+        drawerIcon: () => <Ionicons name="notifications"  size={24} color="black" style={{color:"#845ec2"}} />
+      }}
+        />
+          <Drawer.Screen name="livros" options={{drawerLabel: "Livros",
+        headerTitle:"Livros", 
+        drawerIcon: () => <Ionicons name="search"  size={24} color="black" style={{color:"#845ec2"}} />
+      }}
+        />
+        
+        
+         <Drawer.Screen name="favoritos" options={{drawerLabel: "Favoritos",
+        headerTitle:"Lista de Livros Favoritos", 
+        drawerIcon: () => <Ionicons name="heart"  size={24} color="black" style={{color:"#845ec2"}} />
+      }}
+        />
+         <Drawer.Screen name="biblioteca" options={{drawerLabel: "Biblioteca",
+        headerTitle:"Biblioteca", 
+        drawerIcon: () => <Ionicons name="library"  size={24} color="black" style={{color:"#845ec2"}} />
+      }}
+        />
+        <Drawer.Screen name="usuario" options={{drawerLabel: "Usuario",
+        headerTitle:"Usuario", 
+        drawerIcon: () => <Ionicons name="person"  size={24} color="black" style={{color:"#845ec2"}} />
       }}
         />
         <Drawer.Screen name="list" options={{drawerLabel: "Listagem",
         headerTitle:"Listagem",
-        drawerIcon: () => <Ionicons name="list" size={24} color="black" />
+        drawerIcon: () => <Ionicons name="list" size={24} color="black" style={{color:"#845ec2"}} />
       }}
         />
         <Drawer.Screen name="payment" options={{drawerLabel: "Pagamentos",
         headerTitle:"Pagamentos",
-        drawerIcon: () => <Ionicons name="diamond-outline" size={24} color="black" />
+        drawerIcon: () => <Ionicons name="diamond" size={24} color="black" style={{color:"#845ec2"}} />
       }}
         />
       </Drawer>
