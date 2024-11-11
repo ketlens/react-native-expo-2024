@@ -10,12 +10,6 @@ export default function Home() {
       < Image source={{uri: "https://i.pinimg.com/564x/9a/dc/68/9adc684f40a45456fbffa813b4401104.jpg"}} style={styles.ima} />
       < Image source={{uri: "https://i.pinimg.com/564x/90/7f/10/907f10be3d9f2adc8cddb895da751c9a.jpg"}} style={styles.ima} />
       </View>
-      <View style={styles.content}>
-      <View style={styles.transparentBox}>
-        <Text style={styles.text}>Seja bem-vindo ao GistLiterary</Text>
-        <Text style={styles.sub}>Aqui você encontra os melhores livros de programação</Text>
-        </View>
-      </View>
     </View>
   );
 }
@@ -69,9 +63,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   ima: {
-     width: 80, 
+     width: 70, 
      height: 50, 
-     borderRadius: 50, 
+     borderRadius: 15, 
      margin:30,
   },
 });

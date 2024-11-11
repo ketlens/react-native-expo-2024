@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     },
     ola:{
       color: "#845ec2",
-      fontFamily: "regular",
+      fontFamily: "Vortex",
       fontSize: 20,
       textAlign: "center",
       marginTop: -40,

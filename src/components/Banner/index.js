@@ -76,8 +76,8 @@ const styles = StyleSheet.create({
     page: {
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "#fff",
         padding: 10,
+        borderRadius: 15,
     },
     bulletContent: {
         flexDirection: "row",
@@ -97,5 +97,6 @@ const styles = StyleSheet.create({
     banner: {
         width: "100%",
         height: 200,
+        borderRadius: 15,
     },
 });

@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     backgroundColor:"#F0F8FF",
   },
   title: {
-    fontFamily: "regular",
+    fontFamily: "Enigma",
     fontSize: 20,
     color: "#845ec2",
   },
@@ -97,18 +97,19 @@ const styles = StyleSheet.create({
     flex: 1,
     gap: 10,
     margin: 5,
-    fontFamily: "regular",
+    fontFamily: "Celestial",
     color: "#845ec2",
   },
   button: {
     borderRadius: 50,
     backgroundColor: "#845ec2",
-    padding: 12,
-    marginVertical: 10,
+    padding: 15,
+    marginVertical: 5,
     alignItems: "center",
   },
   buttonText: {
     color: "#F0F8FF",
-    fontSize: 16,
+    fontFamily: "Celestial",
+    fontSize: 14,
   },
 });
