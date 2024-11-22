@@ -46,7 +46,7 @@ export default function App() {
 <Image source={require('../assets/logo1.png')} style={{ width: 200, height: 200, borderRadius: 100, marginTop:-300 }} />
 </View>
     
-      <Text style={styles.title}>GistLiterary</Text>
+      <Text style={styles.title}>Gistliteray</Text>
       <View style={styles.inputbox}>
         <Ionicons name="mail-open-sharp" size={20} color="Black" />
         <TextInput style={styles.emailInputBox} placeholder="E-mail" value={email} onChangeText={setEmail} />
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     backgroundColor:"#F0F8FF",
   },
   title: {
-    fontFamily: "Enigma",
+    fontFamily: "Celestial",
     fontSize: 20,
     color: "#845ec2",
   },
