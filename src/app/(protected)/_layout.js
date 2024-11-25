@@ -59,7 +59,10 @@ const DrawerLayout = () =>{
         drawerIcon: () => <Ionicons name="search"  size={24} color="black" style={{color:"#845ec2"}} />
       }}
         />
-        
+         <Drawer.Screen name="livro" options={{drawerLabel: "livro",
+        drawerIcon: () => <Ionicons name="diamond" size={24} color="black" style={{color:"#845ec2"}} />
+      }}
+        />
         
          <Drawer.Screen name="favoritos" options={{drawerLabel: "Favoritos",
         headerTitle:"Lista de Livros Favoritos", 
