@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Button, TextInput, StyleSheet } from 'react-native';
+import { View, Text, Button, TextInput, StyleSheet, KeyboardAvoidingView } from 'react-native';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Picker } from '@react-native-picker/picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
@@ -55,6 +55,7 @@ export default function List() {
   const [observacoes, setObservacoes] = useState("");
 
   return (
+    
     <View style={styles.content}>
       <View style={styles.InputView}>
         <FontAwesome name="dollar" size={24} color="black" />

@@ -41,7 +41,7 @@ export default function BookListPage() {
   return (
     <View style={styles.container}>
       {/* Título */}
-      <Text style={styles.sectionTitle}>Livros disponíveis</Text>
+      <Text style={styles.sectionTitle}>Livros para ler</Text>
 
       {/* Filtros horizontais */}
       <FlatList

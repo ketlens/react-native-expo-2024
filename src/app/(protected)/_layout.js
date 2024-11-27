@@ -49,8 +49,13 @@ const DrawerLayout = () =>{
         drawerIcon: () => <Ionicons name="home" size={24} color="black" style={{color:"#845ec2"}} />
       }}
         />
-       <Drawer.Screen name="notificacao" options={{drawerLabel: "Notificações",
+         <Drawer.Screen name="notifica" options={{drawerLabel: "Notificações",
         headerTitle:"Notificações", 
+        drawerIcon: () => <Ionicons name="notifications"  size={24} color="black" style={{color:"#845ec2"}} />
+      }}
+        />
+       <Drawer.Screen name="notificacao" options={{drawerLabel: "Atividades",
+        headerTitle:"Atividades", 
         drawerIcon: () => <Ionicons name="notifications"  size={24} color="black" style={{color:"#845ec2"}} />
       }}
         />
@@ -59,17 +64,12 @@ const DrawerLayout = () =>{
         drawerIcon: () => <Ionicons name="search"  size={24} color="black" style={{color:"#845ec2"}} />
       }}
         />
-         <Drawer.Screen name="livro" options={{drawerLabel: "livro",
-        drawerIcon: () => <Ionicons name="diamond" size={24} color="black" style={{color:"#845ec2"}} />
-      }}
-        />
-        
-         <Drawer.Screen name="favoritos" options={{drawerLabel: "Favoritos",
-        headerTitle:"Lista de Livros Favoritos", 
+         <Drawer.Screen name="favoritos" options={{drawerLabel: "Continue lendo",
+        headerTitle:"Continue Lendo", 
         drawerIcon: () => <Ionicons name="heart"  size={24} color="black" style={{color:"#845ec2"}} />
       }}
         />
-         <Drawer.Screen name="biblioteca" options={{drawerLabel: "Biblioteca",
+         <Drawer.Screen name="livro" options={{drawerLabel: "Biblioteca",
         headerTitle:"Biblioteca", 
         drawerIcon: () => <Ionicons name="library"  size={24} color="black" style={{color:"#845ec2"}} />
       }}
